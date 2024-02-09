@@ -19,7 +19,7 @@ Make sure you have the following software installed on your system:
 
 1. Clone the repository to your local machine:
 
-   ``
+   ```
    git clone https://github.com/your-username/bargainhunter-frontend.git
    ```
 
