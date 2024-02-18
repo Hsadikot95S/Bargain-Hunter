@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         // Environment variables based on provided details
-        EC2_HOST = 'ec2-34-224-29-153.compute-1.amazonaws.com'
-        EC2_USER = 'ec2-user'
-        DEPLOY_DIRECTORY = '/home/ec2-user/Bargain-Hunter/Bargain-Hunter'
+        EC2_HOST = 'ec2-184-72-128-210.compute-1.amazonaws.com'
+        EC2_USER = 'ubuntu'
+        DEPLOY_DIRECTORY = '/home/ubuntu/Bargain_Hunters/Bargain-Hunter'
     }
 
     stages {
