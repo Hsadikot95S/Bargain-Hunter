@@ -4,7 +4,7 @@ pipeline {
     // Define all your environment variables
     environment {
         // Environment variables for deployment
-        EC2_HOST = 'ec2-3-82-215-62.compute-1.amazonaws.com'
+        EC2_HOST = 'ec2-52-200-213-124.compute-1.amazonaws.com'
         EC2_USER = 'ec2-user'
         DEPLOY_DIRECTORY = '/home/ec2-user/Bargain-Hunters/Bargain-Hunter'
         SSH_CREDENTIALS_ID = 'ae5822f1-5933-46c1-a39f-5e6074e45e78' // Your Jenkins SSH credential ID
