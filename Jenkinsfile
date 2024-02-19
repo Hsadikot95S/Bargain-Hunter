@@ -2,10 +2,18 @@ pipeline {
     agent any
 
     environment {
-        // Environment variables based on provided details
+        // Define all your environment variables
         EC2_HOST = 'ec2-52-3-6-131.compute-1.amazonaws.com'
         EC2_USER = 'ec2-user'
         DEPLOY_DIRECTORY = '/home/ec2-user/Bargain-Hunters/Bargain-Hunter'
+        SSH_CREDENTIALS_ID = 'ae5822f1-5933-46c1-a39f-5e6074e45e78' // Replace with your actual Jenkins SSH credential ID
+    }
+pipeline {
+    agent any
+
+    environment {
+        // Define your environment variables here
+        NODE_ENV = 'production'
     }
 
     stages {
@@ -18,28 +26,47 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Add your build commands here
-                // This is a placeholder; replace with actual build commands for your project
+                // Install dependencies and build the project
+                echo 'Installing dependencies...'
+                sh 'npm install'
                 echo 'Building the project...'
+                sh 'npm run build' // This assumes you have a 'build' script defined in your package.json
             }
         }
 
         stage('Test') {
             steps {
-                // Run your test commands here
-                // This is a placeholder; replace with actual test commands for your project
+                // Run tests
                 echo 'Testing the project...'
+                sh 'npm test' // This assumes you have tests configured to run with 'npm test'
             }
         }
+    }
+
+    post {
+        always {
+            // Clean up workspace after the pipeline is complete
+            echo 'Cleaning up workspace...'
+            cleanWs()
+        }
+        success {
+            echo 'The build, test, and deployment stages have completed successfully.'
+        }
+        failure {
+            // If the pipeline fails, print this message
+            echo 'The pipeline failed at some stage.'
+        }
+    }
+}
+
 
         stage('Deploy') {
             steps {
-                script {
+                sshagent([SSH_CREDENTIALS_ID]) {
                     // Using SCP to copy files to the EC2 instance
                     sh "scp -o StrictHostKeyChecking=no -r ./* ${EC2_USER}@${EC2_HOST}:${DEPLOY_DIRECTORY}"
                     
                     // SSH into the EC2 instance to execute deployment commands
-                    // This assumes you have a deploy_script.sh in your DEPLOY_DIRECTORY that handles deployment
                     sh "ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} 'cd ${DEPLOY_DIRECTORY} && ./deploy_script.sh'"
                 }
             }
@@ -51,6 +78,9 @@ pipeline {
             // Actions to take after the pipeline has finished
             echo 'The pipeline is complete.'
         }
+        failure {
+            // Actions to take if the pipeline fails
+            echo 'The pipeline failed.'
+        }
     }
 }
-
