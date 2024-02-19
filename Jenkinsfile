@@ -1,18 +1,15 @@
 pipeline {
     agent any
 
+    // Define all your environment variables
     environment {
-        // Define all your environment variables
+        // Environment variables for deployment
         EC2_HOST = 'ec2-52-3-6-131.compute-1.amazonaws.com'
         EC2_USER = 'ec2-user'
         DEPLOY_DIRECTORY = '/home/ec2-user/Bargain-Hunters/Bargain-Hunter'
-        SSH_CREDENTIALS_ID = 'ae5822f1-5933-46c1-a39f-5e6074e45e78' // Replace with your actual Jenkins SSH credential ID
-    }
-pipeline {
-    agent any
+        SSH_CREDENTIALS_ID = 'ae5822f1-5933-46c1-a39f-5e6074e45e78' // Your Jenkins SSH credential ID
 
-    environment {
-        // Define your environment variables here
+        // Environment variables for build and test
         NODE_ENV = 'production'
     }
 
@@ -30,7 +27,7 @@ pipeline {
                 echo 'Installing dependencies...'
                 sh 'npm install'
                 echo 'Building the project...'
-                sh 'npm run build' // This assumes you have a 'build' script defined in your package.json
+                sh 'npm run build' // Assumes a 'build' script is defined in your package.json
             }
         }
 
@@ -38,27 +35,9 @@ pipeline {
             steps {
                 // Run tests
                 echo 'Testing the project...'
-                sh 'npm test' // This assumes you have tests configured to run with 'npm test'
+                sh 'npm test' // Assumes tests are configured to run with 'npm test'
             }
         }
-    }
-
-    post {
-        always {
-            // Clean up workspace after the pipeline is complete
-            echo 'Cleaning up workspace...'
-            cleanWs()
-        }
-        success {
-            echo 'The build, test, and deployment stages have completed successfully.'
-        }
-        failure {
-            // If the pipeline fails, print this message
-            echo 'The pipeline failed at some stage.'
-        }
-    }
-}
-
 
         stage('Deploy') {
             steps {
@@ -75,12 +54,17 @@ pipeline {
 
     post {
         always {
-            // Actions to take after the pipeline has finished
-            echo 'The pipeline is complete.'
+            // Clean up workspace after the pipeline is complete
+            echo 'Cleaning up workspace...'
+            cleanWs()
+        }
+        success {
+            // If the pipeline succeeds, print this message
+            echo 'The build, test, and deployment stages have completed successfully.'
         }
         failure {
-            // Actions to take if the pipeline fails
-            echo 'The pipeline failed.'
+            // If the pipeline fails, print this message
+            echo 'The pipeline failed at some stage.'
         }
     }
 }
