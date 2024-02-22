@@ -36,8 +36,27 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the project...'
-                // Correctly execute your deployment script from its directory
-                sh '/home/ec2-user/Bargain-Hunters/Bargain-Hunter/Deploy.sh'
+                // Commands from Deploy.sh are now directly included here
+                script {
+                    // Navigate to the deployment directory
+                    if (sh (script: 'cd /home/ec2-user/Bargain-Hunters/Bargain-Hunter', returnStatus: true) == 0) {
+                        // If the cd command is successful, proceed with the deployment steps
+                        echo "Installing dependencies..."
+                        sh 'npm install'
+                        echo "Building the project..."
+                        sh 'npm run build'
+                        echo "Restarting the application..."
+                        // Use the correct command to restart your application
+                        // For Node.js applications using pm2:
+                        sh 'pm2 restart app'
+                        // For Docker-based applications, you might use:
+                        // sh 'docker-compose down && docker-compose up -d'
+                        echo "Deployment complete."
+                    } else {
+                        // If the cd command fails, exit the script with an error
+                        error("Failed to navigate to the project directory")
+                    }
+                }
             }
         }
     }
