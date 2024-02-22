@@ -1,81 +1,79 @@
 pipeline {
-    agent any // Specifies that the pipeline can run on any available agent
+    agent any
+
+    environment {
+        // Deployment Details
+        EC2_HOST = 'ec2-50-19-145-133.compute-1.amazonaws.com'
+        EC2_USER = 'ec2-user'
+        DEPLOY_DIRECTORY = '/home/ec2-user/Bargain-Hunters/Bargain-Hunter'
+        SSH_CREDENTIALS_ID = 'ae5822f1-5933-46c1-a39f-5e6074e45e78'
+        NODE_ENV = 'production'
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                // Checking out a specific branch from a Git repository
-                checkout([$class: 'GitSCM', branches: [[name: 'HomePage_V0']],
-                          userRemoteConfigs: [[url: 'https://github.com/Hsadikot95S/Bargain-Hunter.git']]])
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building the project...'
-                // Navigate to the project's directory before building
-                dir('/home/ec2-user/Bargain-Hunters/Bargain-Hunter') {
-                    // Ensure Node.js is installed correctly here
-                    // It's assumed Node.js and npm are already installed as part of the environment setup
-                    echo 'Ensure Node.js is installed correctly here'
-                    // Install project dependencies and build the project
-                    sh 'npm install'
-                    sh 'npm run build'
-                }
+                echo 'Building React app...'
+                // Setting up the environment variable NODE_ENV to production
+                // This will create an optimized build of your React app
+                sh 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Add your test commands here
-                // Example: sh 'npm test'
+                // Assuming you have tests set up with Jest or a similar testing framework
+                // sh 'npm test'
+                // For this example, tests are commented out. Uncomment in real use.
+            }
+        }
+
+        stage('Validate HTML/CSS') {
+            steps {
+                echo 'Validating HTML/CSS...'
+                // Assuming validation commands are installed and configured
+                // Placeholder commands, replace with actual commands if needed
+                sh 'html-validator --file build/index.html || true'
+                sh 'stylelint "src/**/*.css" || true'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying the project...'
-                // Commands from Deploy.sh are now directly included here
-                script {
-                    // Navigate to the deployment directory
-                    if (sh (script: 'cd /home/ec2-user/Bargain-Hunters/Bargain-Hunter', returnStatus: true) == 0) {
-                        // If the cd command is successful, proceed with the deployment steps
-                        echo "Installing dependencies..."
-                        sh 'npm install'
-                        echo "Building the project..."
-                        sh 'npm run build'
-                        echo "Restarting the application..."
-                        // Use the correct command to restart your application
-                        // For Node.js applications using pm2:
-                        sh 'pm2 restart app'
-                        // For Docker-based applications, you might use:
-                        // sh 'docker-compose down && docker-compose up -d'
-                        echo "Deployment complete."
-                    } else {
-                        // If the cd command fails, exit the script with an error
-                        error("Failed to navigate to the project directory")
-                    }
+                echo 'Deploying to server...'
+                sshagent([SSH_CREDENTIALS_ID]) {
+                    // Syncing built files to the EC2 instance using rsync
+                    // Excluding node_modules and source files, only deploy the build directory
+                    sh "rsync -avz --delete --exclude '.git/' --exclude 'node_modules/' --exclude 'src/' -e 'ssh -o StrictHostKeyChecking=accept-new' ./build/ ${EC2_USER}@${EC2_HOST}:${DEPLOY_DIRECTORY}"
                 }
             }
         }
     }
 
     post {
-        success {
-            emailext (
-                to: 'ryb1802@gmail.com',
-                subject: 'Jenkins Pipeline Notification: Build Successful',
-                body: 'The Jenkins pipeline build was successful.'
-            )
+        always {
+            echo 'Cleaning up workspace...'
+            cleanWs()
         }
-
+        success {
+            echo 'Build and deployment succeeded.'
+        }
         failure {
-            emailext (
-                to: 'ryb1802@gmail.com',
-                subject: 'Jenkins Pipeline Notification: Build Failed',
-                body: 'The Jenkins pipeline build failed.'
-            )
+            echo 'Build or deployment failed.'
         }
     }
 }
