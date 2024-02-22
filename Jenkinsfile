@@ -2,9 +2,22 @@ pipeline {
     agent any
     
     environment {
-        PATH = "/opt/homebrew/bin:$PATH"
+        PATH = "/home/ec2-user/Bargain-Hunters/Bargain-Hunter" stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Add your test commands here
+            }
+        }
+
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the project...'
+                // Add your deployment commands here
+                // Example: sh 'deploy-script.sh'
+            }
+        }
     }
-    
     stages {
         stage('Checkout') {
             steps {
@@ -15,7 +28,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh '/opt/homebrew/bin/brew install node' // Use the full path to Homebrew
+                sh '/home/ec2-user/Bargain-Hunters/Bargain-Hunter install node' // Use the full path to Homebrew
                 sh 'npm install' // Install project dependencies
                 sh 'npm run build' // Build the React project
             }
