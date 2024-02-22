@@ -1,6 +1,6 @@
 pipeline {
     agent any // Specifies that the pipeline can run on any available agent
-`
+
     stages {
         stage('Checkout') {
             steps {
@@ -13,13 +13,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                // Assuming the command intended was to navigate to the project's directory before building
+                // Navigate to the project's directory before building
                 dir('/home/ec2-user/Bargain-Hunters/Bargain-Hunter') {
-                    // Assuming 'install node' was meant to ensure Node.js is installed, which typically isn't done via a script like this
-                    // It's better to ensure Node.js is installed as part of the environment setup outside of the Jenkinsfile
-                    // However, for demonstration, I'll leave a placeholder echo command
+                    // Ensure Node.js is installed correctly here
+                    // It's assumed Node.js and npm are already installed as part of the environment setup
                     echo 'Ensure Node.js is installed correctly here'
-
                     // Install project dependencies and build the project
                     sh 'npm install'
                     sh 'npm run build'
@@ -38,8 +36,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the project...'
-                // Execute your deployment script here
-                sh './Deploy.sh'
+                // Correctly execute your deployment script from its directory
+                sh '/home/ec2-user/Bargain-Hunters/Bargain-Hunter/Deploy.sh'
             }
         }
     }

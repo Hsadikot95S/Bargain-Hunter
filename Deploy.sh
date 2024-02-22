@@ -1,29 +1,22 @@
-[200~#!/bin/bash
+#!/bin/bash
 
 # Navigate to the deployment directory
 cd /home/ec2-user/Bargain-Hunters/Bargain-Hunter || exit
-#
-# # Example for a Node.js application
-# # Install dependencies
+
+# Installing dependencies
 echo "Installing dependencies..."
 npm install
-#
-# # Build the project (if necessary)
+
+# Building the project
 echo "Building the project..."
 npm run build
-#
-# # Restart the application
-# # This command varies greatly depending on how your application is run
-# # For a simple Node.js application using pm2:
+
+# Restarting the application with pm2
 echo "Restarting the application..."
-pm2 restart app
-#
-# # For applications using Docker, you might restart a Docker container
-#docker-compose down && docker-compose up -d
-#
-# # For other types of applications, adjust the restart command accordingly
-# # For example, for a Python Flask application running under Gunicorn:
-# # systemctl restart myapp
-#
+pm2 restart app || {
+    echo "pm2 command failed. Is pm2 installed?"
+    exit 1
+}
+
 echo "Deployment complete."
-#
+
