@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './listHome.css';
+import houseService from '../services/houseService';
 
 const ListHome = () => {
     const [propertyType, setPropertyType] = useState('');
@@ -7,7 +8,7 @@ const ListHome = () => {
     const [numBaths, setNumBaths] = useState('');
     const [squareFeet, setSquareFeet] = useState('');
     const [description, setDescription] = useState('');
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState('');
     const [location, setLocation] = useState('');
     const [address, setAddress] = useState('');
 
@@ -46,6 +47,21 @@ const ListHome = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const houseFull = {
+            "houseType": propertyType,
+            "houseDescription": description,
+            "bedrooms": numBedrooms,
+            "baths": numBaths,
+            "area": squareFeet,
+            "itemImageURL": images,
+            "pincode": location,
+            "address": address,
+
+        }
+
+        const res = houseService.createhouse(houseFull);
+        console.log(res);
         console.log('Form submitted:', { propertyType, numBedrooms, numBaths, squareFeet, description, images, location, address });
     };
 

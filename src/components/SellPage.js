@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './sellPage.css';
+import productService from '../services/productService';
 
 const SellPage = () => {
     const [itemName, setItemName] = useState('');
@@ -29,8 +30,18 @@ const SellPage = () => {
         setCurrencyType(e.target.value); // Update currencyType state
     };
 
-    const handleListItem = () => {
+    const handleListItem = async () => {
         // Logic to handle listing the item, e.g., sending data to the server
+        const itemFull = {
+            "itemTitle": itemName,
+            "itemDescription": itemDescription,
+            "itemPrice": itemPrice,
+            "itemImageURL": itemImage,
+            "itemCurrency": currencyType
+        }
+
+        const res = productService.createProduct(itemFull);
+        console.log(res);
         console.log('Item listed:', { itemName, itemDescription, itemPrice, itemImage, currencyType });
     };
 
@@ -46,7 +57,7 @@ const SellPage = () => {
 
                 <label>Price:</label>
                 <input type="text" value={itemPrice} onChange={handleItemPriceChange} />
-                
+
                 <select value={currencyType} onChange={handleCurrencyTypeChange}>
                     <option value="dollar">Dollar</option>
                     <option value="euro">Euro</option>

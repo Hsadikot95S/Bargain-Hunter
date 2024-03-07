@@ -1,55 +1,96 @@
 pipeline {
+
     agent any
-    
+ 
     environment {
-        PATH = "/opt/homebrew/bin:$PATH"
+
+        // Deployment Details
+
+        EC2_HOST = 'ec2-3-82-164-101.compute-1.amazonaws.com'
+
+        EC2_USER = 'ubuntu'
+
+        DEPLOY_DIRECTORY = '/home/ubuntu/Bargain-Hunter'
+
+        SSH_CREDENTIALS_ID = 'ae5822f1-5933-46c1-a39f-5e6074e45e78'
+
+        NODE_ENV = 'production'
+
     }
-    
+ 
     stages {
+
         stage('Checkout') {
+
             steps {
-                git branch: 'HomePage_V0', url: 'https://github.com/Hsadikot95S/Bargain-Hunter.git'
+
+                checkout scm
+
             }
+
         }
-        
-        stage('Build') {
+ 
+        stage('Build React') {
+
             steps {
-                echo 'Building the project...'
-                sh '/opt/homebrew/bin/brew install node' // Use the full path to Homebrew
+
+                echo 'Building React project...'
+
                 sh 'npm install' // Install project dependencies
+
                 sh 'npm run build' // Build the React project
+
             }
+
         }
-        
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Add your test commands here
-            }
-        }
-        
+ 
         stage('Deploy') {
+
             steps {
-                echo 'Deploying the project...'
-                // Add your deployment commands here
+
+                echo 'Deploying to server...'
+
+                sshagent([SSH_CREDENTIALS_ID]) {
+
+                    // Syncing files to the EC2 instance using rsync
+
+                    // The path to the private key will be managed by Jenkins SSH Agent
+
+                    sh "rsync -avz --delete --exclude '.git/' --exclude 'node_modules/' -e 'ssh -o StrictHostKeyChecking=accept-new' ./ ${EC2_USER}@${EC2_HOST}:${DEPLOY_DIRECTORY}"
+
+                }
+
             }
+
         }
+
     }
-    
+ 
     post {
+
+        always {
+
+            echo 'Cleaning up workspace...'
+
+            cleanWs()
+
+        }
+
         success {
-            emailext (
-                to: 'ryb1802@gmail.com',
-                subject: 'Jenkins Pipeline Notification: Build Successful',
-                body: 'The Jenkins pipeline has been successfully executed.'
-            )
+
+            echo 'Build and deployment succeeded.'
+
         }
+
         failure {
-            emailext (
-                to: 'ryb1802@gmail.com',
-                subject: 'Jenkins Pipeline Notification: Build Failed',
-                body: 'The Jenkins pipeline has failed. Please check the build logs for details.'
-            )
+
+            echo 'Build or deployment failed.'
+
         }
+
     }
+
 }
+
+
+

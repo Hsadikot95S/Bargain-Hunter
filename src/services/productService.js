@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:8080/api/products';
+const API = axios.create({ baseURL: 'http://localhost:8084/item' });
+//const baseURL = 'http://localhost:8084/api/products';
 
 const productService = {
   getAllProducts: async () => {
     try {
-      const response = await axios.get(baseURL);
+      const response = await API.get(`/getAllItems`);
       return response.data;
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -15,7 +16,7 @@ const productService = {
 
   createProduct: async (productData) => {
     try {
-      const response = await axios.post(baseURL, productData);
+      const response = await API.post(`/saveItem`, productData);
       return response.data;
     } catch (error) {
       console.error('Error creating product:', error);
@@ -25,7 +26,7 @@ const productService = {
 
   updateProduct: async (productId, productData) => {
     try {
-      const response = await axios.put(`${baseURL}/${productId}`, productData);
+      const response = await API.put(`updateItem/${productId}`, productData);
       return response.data;
     } catch (error) {
       console.error('Error updating product:', error);
@@ -35,7 +36,7 @@ const productService = {
 
   deleteProduct: async (productId) => {
     try {
-      const response = await axios.delete(`${baseURL}/${productId}`);
+      const response = await API.delete(`/deleteItem/${productId}`);
       return response.data;
     } catch (error) {
       console.error('Error deleting product:', error);
