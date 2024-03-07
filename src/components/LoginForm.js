@@ -1,7 +1,6 @@
-// LoginForm.js
-
 import React, { useState } from 'react';
 import '../loginForm.css';
+
 const LoginForm = ({ onClose }) => {
     const [formData, setFormData] = useState({
         email: '',
@@ -21,16 +20,18 @@ const LoginForm = ({ onClose }) => {
 
     return (
         <div className="login-form">
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
-                
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+            <div className="form-content">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                    
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
 
-                <button type="submit">Login</button>
-            </form>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         </div>
     );
 };

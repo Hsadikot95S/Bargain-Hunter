@@ -1,0 +1,27 @@
+.login-form {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../background.jpeg'); /* Adjust the path to your background image */
+    background-size: cover;
+    opacity: 0.5; /* Adjust opacity as needed */
+    z-index: -1;
+}
+
+.form-content {
+    position: relative; /* Added position relative */
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

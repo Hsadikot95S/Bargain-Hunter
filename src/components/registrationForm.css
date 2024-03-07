@@ -1,46 +1,87 @@
 .registration-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.registration-form__form {
-  width: 400px;
+  max-width: 400px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.registration-form__label {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
-
-.registration-form__input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  text-align: center; /* Center-align heading */
 }
 
-.registration-form__button {
-  width: 100%;
+.mode-toggle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mode-toggle button {
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  width: 48%;
+  background-color: #4CAF50; /* Green button color */
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.registration-form__button:hover {
-  background-color: #0056b3;
+.mode-toggle button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.social-login button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  background-color: #3b5998; /* Facebook blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-login button:nth-child(2) {
+  background-color: #db4437; /* Google red */
+}
+
+.social-login button:nth-child(3) {
+  background-color: #000; /* Apple black */
+}
+
+form {
+  margin-top: 20px;
+}
+
+form input,
+form select,
+form button {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+form label {
+  display: flex;
+  align-items: center;
+}
+
+form label input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.registration-form button[type="submit"] {
+  background-color: #4CAF50; /* Green button color */
+}
+
+.registration-form button[type="submit"]:disabled {
+  background-color: #ccc; /* Disabled button color */
+  cursor: not-allowed;
+}
+.password-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px; /* Add margin to create space between the input and message */
 }

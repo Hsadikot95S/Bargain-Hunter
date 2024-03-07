@@ -5,7 +5,10 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import SellPage from './components/SellPage';
 import ListHome from './components/ListHome';
-import ProductList from './components/ProductList'; // Import the ProductList component
+import ProductList from './components/ProductList';
+import RegistrationForm from './components/RegistrationForm';
+import LoginForm from './components/LoginForm'; // Import the LoginForm component
+import BackendCheck from './components/BackendCheck';
 import './styles.css';
 
 const App = () => {
@@ -16,7 +19,10 @@ const App = () => {
                 <Routes>
                     <Route path="/sell" element={<SellPage />} />
                     <Route path="/list-home" element={<ListHome />} />
-                    <Route path="/products" element={<ProductList />} /> {/* Define the route for ProductList */}
+                    <Route path="/products" element={<ProductList />} />
+                    <Route path="/register" element={<RegistrationForm />} /> {/* Route for RegistrationForm */}
+                    <Route path="/login" element={<LoginForm />} /> {/* Route for LoginForm */}
+                    <Route path="/backend-check" element={<BackendCheck />} />
                     <Route path="/" element={<MainContent />} />
                 </Routes>
                 <Footer />
