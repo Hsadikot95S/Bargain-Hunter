@@ -6,8 +6,8 @@ import Footer from './components/Footer';
 import SellPage from './components/SellPage';
 import ListHome from './components/ListHome';
 import ProductList from './components/ProductList';
-import RegistrationForm from './components/RegistrationForm';
-import LoginForm from './components/LoginForm'; // Import the LoginForm component
+import RegistrationForm from './components/RegistrationForm'; // Import RegistrationForm component
+import Dashboard from './components/Dashboard';
 import BackendCheck from './components/BackendCheck';
 import './styles.css';
 
@@ -21,7 +21,7 @@ const App = () => {
                     <Route path="/list-home" element={<ListHome />} />
                     <Route path="/products" element={<ProductList />} />
                     <Route path="/register" element={<RegistrationForm />} /> {/* Route for RegistrationForm */}
-                    <Route path="/login" element={<LoginForm />} /> {/* Route for LoginForm */}
+                    <Route path="/dashboard" element={<Dashboard />} /> 
                     <Route path="/backend-check" element={<BackendCheck />} />
                     <Route path="/" element={<MainContent />} />
                 </Routes>

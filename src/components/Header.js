@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import logo from './logo.jpeg'; // Import the logo image
-import LoginForm from './LoginForm';
+
 import RegistrationForm from './RegistrationForm';
 import PostAd from './PostAd'; // Import the PostAd component
 import '../styles.css'; // Import the CSS for styling
@@ -83,7 +83,6 @@ const Header = () => {
                         <ul>
                             <li><button className="saved-button-icon"><FaBookmark className="icon" size={10} />Saved</button></li>
                             <li><button onClick={openRegistrationModal}>Register</button></li>
-                            <li><button onClick={openLoginModal}>Login</button></li>
                         </ul>
                     </nav>
                 </div>
@@ -92,7 +91,7 @@ const Header = () => {
                 <RegistrationForm onClose={closeRegistrationModal} />
             </Modal>
             <Modal isOpen={isLoginModalOpen} onRequestClose={closeLoginModal}>
-                <LoginForm onClose={closeLoginModal} />
+                
             </Modal>
             {/* PostAd modal */}
             <Modal isOpen={isPostAdModalOpen} onRequestClose={closePostAdModal}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './registrationForm.css'; // Import CSS file for styling
 
+
 function RegistrationForm() {
   const [isSignInMode, setIsSignInMode] = useState(true);
   const [email, setEmail] = useState('');
@@ -145,10 +146,8 @@ function RegistrationForm() {
         )}
       </div>
       <div className="social-login">
-        {/* Add social media sign-in buttons */}
+        {/* Add "Continue with Google" button */}
         <button>Sign In with Google</button>
-        <button>Sign In with Facebook</button>
-        <button>Sign In with Apple</button>
       </div>
     </div>
   );
