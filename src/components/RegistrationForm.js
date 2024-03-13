@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Import Axios
 import './registrationForm.css'; // Import CSS file for styling
-
 
 function RegistrationForm() {
   const [isSignInMode, setIsSignInMode] = useState(true);
@@ -14,6 +14,7 @@ function RegistrationForm() {
   const [university, setUniversity] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false); // State variable for registration success
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -36,9 +37,39 @@ function RegistrationForm() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    // Prepare data object for registration
+    const userData = {
+      email,
+      password,
+      firstName,
+      lastName,
+      isProfessional,
+      professionalType,
+      university,
+      phoneNumber,
+      zipCode,
+    };
+
+    try {
+      // Make a POST request to your Java backend with Axios
+      const response = await axios.post('http://localhost:8080/register', userData);
+
+      // Handle success response
+      console.log('Registration successful:', response.data);
+      setIsSignInMode(true);
+      setRegistrationSuccess(true);
+    } catch (error) {
+      // Handle error
+      console.error('Registration failed:', error.response.data);
+    }
+  };
+
+  const handleSignInClick = () => {
+    // Navigate to dashboard or desired route
+    window.location.href = '/dashboard';
   };
 
   return (
@@ -66,7 +97,7 @@ function RegistrationForm() {
                 onChange={handlePasswordChange}
               />
               <p style={{ color: 'red', fontSize: '14px' }}>{passwordMessage}</p>
-              <button type="submit">Sign In</button>
+              <button onClick={handleSignInClick}>Sign In</button>
               <a href="/forgot-password">Forgot Password?</a>
             </form>
           </div>
@@ -149,6 +180,12 @@ function RegistrationForm() {
         {/* Add "Continue with Google" button */}
         <button>Sign In with Google</button>
       </div>
+      {/* Display success message if registration is successful */}
+      {registrationSuccess && (
+        <p>
+          Registration successful! You can now .
+        </p>
+      )}
     </div>
   );
 }
