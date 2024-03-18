@@ -5,7 +5,7 @@ const PostAd = ({ onClose }) => {
     const [step, setStep] = useState(1);
     const [selectedPlan, setSelectedPlan] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
-    const [plans, setPlans] = useState([  // plans variable is not currently used
+    const [plans] = useState([
         {
             id: 1,
             name: 'Free Plan (Students Only)',
@@ -15,7 +15,39 @@ const PostAd = ({ onClose }) => {
                 'Add 5 photographs',
             ],
         },
-        // Other plan objects...
+        {
+            id: 2,
+            name: 'Bronze Plan',
+            price: '$49.99',
+            features: [
+                'List unlimited items',
+                'Add 30 photographs',
+                'Dedicated Customer Support',
+                'Advanced Analytics',
+            ],
+        },
+        {
+            id: 3,
+            name: 'Silver Plan',
+            price: '$74.99',
+            features: [
+                'List unlimited items',
+                '7 days of highlight on your ADS',
+                'Advanced Analytics',
+                'Dedicated Customer Support',
+            ],
+        },
+        {
+            id: 4,
+            name: 'Gold Plan',
+            price: '$99.99',
+            features: [
+                'List unlimited items',
+                '30 days of highlight on your ADS',
+                'Dedicated Customer Support',
+                'Advanced Analytics',
+            ],
+        },
     ]);
     const [paymentInfo, setPaymentInfo] = useState({
         cardNumber: '',
@@ -226,3 +258,4 @@ const PostAd = ({ onClose }) => {
 };
 
 export default PostAd;
+
