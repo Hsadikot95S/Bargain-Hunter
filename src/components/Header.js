@@ -13,10 +13,6 @@ const Header = () => {
     const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
     const [isPostAdModalOpen, setIsPostAdModalOpen] = useState(false); // State for PostAd modal
 
-    const openLoginModal = () => {
-        setIsLoginModalOpen(true);
-    };
-
     const closeLoginModal = () => {
         setIsLoginModalOpen(false);
     };
@@ -69,8 +65,7 @@ const Header = () => {
                     </div>
 
                     <div className="saved-button">
-                    
-                        <button className="post-ad-button"onClick={openPostAdModal}>Post Ad</button> 
+                        <button className="post-ad-button" onClick={openPostAdModal}>Post Ad</button> 
                     </div>
                 </div>
                 <div className="center-section">
