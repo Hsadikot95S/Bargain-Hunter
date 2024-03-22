@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PostAd.css';
+import adService from '../services/adService';
 
 const PostAd = ({ onClose }) => {
     const [step, setStep] = useState(1);
@@ -88,6 +89,18 @@ const PostAd = ({ onClose }) => {
 
     const handleAdSubmit = (event) => {
         event.preventDefault();
+
+        const adBody = {
+            "adTitle": adDetails.title,
+            "adDescription": adDetails.description,
+            "adPlan": adDetails.plan,
+            "adDisplayDays": adDetails.displayDays,
+            "adPhotos": adDetails.photos,
+            "adVideos": adDetails.videos
+        }
+
+        const res = adService.createAd(adBody);
+        console.log(res);
         console.log('Ad submitted:', adDetails);
         onClose();
     };
