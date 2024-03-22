@@ -15,18 +15,6 @@ const MainContent = () => {
     const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
     const [currentAdIndex, setCurrentAdIndex] = useState(0);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentAdIndex((prevIndex) => (prevIndex + 1) % ads.length);
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    const handleRegistrationClose = () => {
-        setIsRegistrationOpen(false);
-    };
-
     // Define advertisements
     const ads = [
         {
@@ -40,6 +28,18 @@ const MainContent = () => {
             link: "/ad2"
         }
     ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentAdIndex((prevIndex) => (prevIndex + 1) % ads.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [ads.length]);
+
+    const handleRegistrationClose = () => {
+        setIsRegistrationOpen(false);
+    };
 
     return (
         <main className="main-content">

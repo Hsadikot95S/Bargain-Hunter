@@ -6,7 +6,7 @@ const PostAd = ({ onClose }) => {
     const [step, setStep] = useState(1);
     const [selectedPlan, setSelectedPlan] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
-    const [plans, setPlans] = useState([
+    const [plans] = useState([
         {
             id: 1,
             name: 'Free Plan (Students Only)',
@@ -79,12 +79,6 @@ const PostAd = ({ onClose }) => {
         } else {
             alert('Please select a plan.');
         }
-    };
-
-    const handlePaymentSubmit = (event) => {
-        event.preventDefault();
-        console.log('Payment profile created successfully!');
-        setStep(2); // Proceed to the next step (ad details)
     };
 
     const handleAdSubmit = (event) => {
@@ -277,3 +271,4 @@ const PostAd = ({ onClose }) => {
 };
 
 export default PostAd;
+

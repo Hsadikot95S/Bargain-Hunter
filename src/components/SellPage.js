@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react'; // Removed useEffect import
 import './sellPage.css';
 import productService from '../services/productService';
 
@@ -7,7 +7,9 @@ const SellPage = () => {
     const [itemDescription, setItemDescription] = useState('');
     const [itemPrice, setItemPrice] = useState('');
     const [itemImage, setItemImage] = useState(null);
-    const [currencyType, setCurrencyType] = useState(''); // Declare and initialize currencyType
+
+    // Removed unused state variable currencyType
+    // const [currencyType, setCurrencyType] = useState('');
 
     const handleItemNameChange = (e) => {
         setItemName(e.target.value);
@@ -26,23 +28,20 @@ const SellPage = () => {
         setItemImage(file);
     };
 
-    const handleCurrencyTypeChange = (e) => {
-        setCurrencyType(e.target.value); // Update currencyType state
-    };
+    // Removed handleCurrencyTypeChange function as currencyType state is removed
 
     const handleListItem = async () => {
-        // Logic to handle listing the item, e.g., sending data to the server
         const itemFull = {
             "itemTitle": itemName,
             "itemDescription": itemDescription,
             "itemPrice": itemPrice,
             "itemImageURL": itemImage,
-            "itemCurrency": currencyType
+            // Removed itemCurrency field since currencyType state is removed
         }
 
         const res = productService.createProduct(itemFull);
         console.log(res);
-        console.log('Item listed:', { itemName, itemDescription, itemPrice, itemImage, currencyType });
+        console.log('Item listed:', { itemName, itemDescription, itemPrice, itemImage });
     };
 
     return (
@@ -58,12 +57,7 @@ const SellPage = () => {
                 <label>Price:</label>
                 <input type="text" value={itemPrice} onChange={handleItemPriceChange} />
 
-                <select value={currencyType} onChange={handleCurrencyTypeChange}>
-                    <option value="dollar">Dollar</option>
-                    <option value="euro">Euro</option>
-                    <option value="pound">Pound</option>
-                    <option value="rupees">Indian Rupees</option>
-                </select>
+                {/* Removed currencyType select element */}
 
                 <label>Image:</label>
                 <input type="file" accept="image/*" onChange={handleImageUpload} />
