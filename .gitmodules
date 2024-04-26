@@ -1,0 +1,3 @@
+[submodule "BHFrontend"]
+	path = BHFrontend
+	url = https://github.com/Ryuk420/BHFrontend.git
