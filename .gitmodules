@@ -1,6 +1,3 @@
 [submodule "BHFrontend"]
 	path = BHFrontend
 	url = https://github.com/Ryuk420/BHFrontend.git
-[submodule "bargain_hunter_api"]
-	path = bargain_hunter_api
-	url = https://github.com/Hsadikot95S/Bargain-Hunter.git
