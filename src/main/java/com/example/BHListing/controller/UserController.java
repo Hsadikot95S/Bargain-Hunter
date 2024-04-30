@@ -1,6 +1,7 @@
 package com.example.BHListing.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,12 +32,12 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody User user) {
+    public ResponseEntity<User> loginUser(@RequestBody User user) {
         User existingUser = userService.findByEmail(user.getEmail());
         if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
-            return ResponseEntity.ok("Login successful");
+            return ResponseEntity.status(HttpStatus.OK).body(existingUser);
         } else {
-            return ResponseEntity.badRequest().body("Invalid username or password");
+            return ResponseEntity.badRequest().body(user);
         }
     }
 

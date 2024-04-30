@@ -37,6 +37,11 @@ public class House {
 	}
 
 
+	public House() {
+		super();
+	}
+
+
 	public int getPrice() {
 		return price;
 	}
