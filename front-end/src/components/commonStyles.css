@@ -1,0 +1,118 @@
+/* Common styles for Help Center and Accessibility Page */
+
+.page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-container h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .page-container h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1565c0; /* Dark blue FAQ heading */
+  }
+  
+  .page-container p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .page-container ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .page-container li {
+    margin-bottom: 30px;
+    background-color: #ffffff; /* White FAQ background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-container li strong {
+    font-weight: bold;
+    color: #333; /* Dark gray FAQ title */
+  }
+  
+  .page-container li p {
+    margin-top: 10px;
+    color: #555; /* Gray FAQ content */
+  }
+  
+  .page-container a {
+    color: #1e88e5; /* Blue link */
+    text-decoration: none;
+  }
+  
+  .page-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Additional styling for Accessibility Page */
+  
+  .accessibility-info {
+    background-color: #d9e8e9; /* Light green background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Additional styling for Help Center Page */
+  
+  .help-center-info {
+    background-color: #e1f5fe; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .privacy-info {
+    background-color: #e1f5fe; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .terms-info {
+    background-color: #e1f5fe; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .join-us-info {
+  background-color: #e1f5fe; /* Light blue background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-us-info {
+    background-color: #e1f5fe; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+  .member-benefits-info {
+    background-color: #e1f5fe; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+  .posting-policy-info  {
+    background-color: #e1f5fe; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }

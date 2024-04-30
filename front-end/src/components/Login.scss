@@ -1,0 +1,132 @@
+section.login {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../public/b1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (max-width: 700px) {
+    section.login {
+        margin-top: 10rem;
+    }
+}
+
+.form--container {
+    width: 80%;
+    max-width: 420px;
+    background: transparent;
+    border: 10px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: black;
+    border-radius: 40px;
+    padding: 40px 20px; /* Adjusted padding */
+}
+
+.form--container h3.text {
+    margin-bottom: 20px; /* Adjusted margin */
+    font-size: 24px; /* Adjusted font size */
+    font-weight: 600;
+    text-align: center; /* Center align text */
+}
+
+.form--container form .form1--box {
+    height: 60px; /* Fixed height for text boxes */
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 20px;
+}
+
+.form--container form .form-- input {
+    height: 3rem; /* Adjust the height as needed */
+    width: 95%;
+    font-size: 1.6rem; /* Adjust the font size as needed */
+    font-weight: 500;
+    text-transform: none;
+    padding-left: 1rem;
+}
+
+.form--container form .form--input {
+    height: 100%; /* Adjusted height */
+    width: calc(100% - 12px); /* Adjusted width */
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: none;
+    padding: 0 10px; /* Adjusted padding */
+    box-sizing: border-box;
+}
+
+.form--container form button {
+    width: 100%;
+    padding: 14px 0; /* Adjusted padding */
+    color: #fff;
+    background-color: #97adc6;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px; /* Adjusted margin */
+}
+
+.form--container form button:hover {
+    background-color: #6897cc;
+}
+
+.form--container p.text {
+    text-align: center;
+    font-size: 14px; /* Adjusted font size */
+    text-transform: uppercase;
+}
+
+.social-login-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Adjusted margin */
+}
+
+.social-login-box {
+    width: 48%; /* Adjusted width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    padding: 10px; /* Adjusted padding */
+    cursor: pointer;
+}
+
+.social-login-box:hover {
+    background-color: #97adc6;
+    color: #fff;
+}
+
+.social-login-box svg {
+    font-size: 24px; /* Adjusted font size */
+    font-weight: 800;
+}
+
+.social-login-box p {
+    font-size: 16px; /* Adjusted font size */
+    text-transform: none;
+}
+
+.account {
+    margin-block: 20px; /* Adjusted margin */
+    text-align: center;
+    font-size: 18px; /* Adjusted font size */
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.account a {
+    text-decoration: underline;
+    color: #000000; /* Adjusted color */
+}

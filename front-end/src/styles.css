@@ -1,0 +1,403 @@
+/* styles.css */
+
+/* Header styles */
+.header {
+    background-color: #ffffff;
+    color: #041b34; /* Adjusted text color */
+    padding: 3px; /* Adjust as needed */
+}
+
+.centered-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.application-dropdown,
+.category-dropdown {
+    position: relative;
+    margin-right: 20px; /* Add margin for spacing */
+}
+
+.application-dropdown-button,
+.category-dropdown-button {
+    background-color: transparent;
+    border: none;
+    color: #041b34; /* Change the color of the text */
+    cursor: pointer;
+    display: flex; /* Align icon and text in the same line */
+    align-items: center; /* Vertically center items */
+}
+
+.icon-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Width of the square box */
+    height: 40px; /* Height of the square box */
+    border: 1px solid #041b34; /* Border around the square box */
+    margin-right: 10px; /* Spacing between icon box and text */
+}
+
+.icon {
+    font-size: 20px; /* Adjust icon size */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.application-dropdown:hover .dropdown-content,
+.category-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.post-ad-button {
+    
+    background-color: transparent;
+    border: none;
+    color: #0e58a7; /* Change the color of the text */
+    cursor: pointer;
+    padding: 0; /* Remove padding */
+    font-size: 17px; /* Adjust the font size as desired */
+    font-weight: normal; /* Make the text bold */
+}
+
+.post-ad-button:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+.saved-button {
+    display: flex;
+    align-items: center;
+}
+
+.saved-button-icon {
+    background-color: transparent;
+    border: none;
+    color: #041b34; /* Change the color of the text */
+    cursor: pointer;
+    display: flex; /* Align icon and text in the same line */
+    align-items: center; /* Vertically center items */
+}
+
+.saved-button-icon:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+.right-section {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.nav ul li button {
+    background-color: transparent;
+    border: none;
+    color: #041b34; /* Change the color of the text */
+    cursor: pointer;
+}
+
+.nav ul li button:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    width: 100px; /* Adjust the width of the logo as desired */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the logo horizontally */
+}
+
+/* CSS for the dropdown */
+.category-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.category-dropdown-button {
+    background-color: transparent;
+    border: none;
+    color: #041b34; /* Change the color of the text */
+    cursor: pointer;
+}
+
+.category-dropdown-button svg {
+    margin-right: 5px; /* Adjusted spacing between icon and text */
+}
+
+
+
+
+/* Main Content Styles */
+.main-content {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content-image {
+    height: 50%; /* Adjust the height value as needed */
+    width: 100%;
+}
+
+.registration-form-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+
+
+/* Plan Info Styles */
+.plan-info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Distribute plans evenly */
+    flex-wrap: nowrap; /* Prevent wrapping to keep plans in one line */
+}
+
+.plan {
+    width: 48%; /* Adjust width to leave space for margins */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.plan:nth-child(odd) {
+    margin-right: 10px; /* Adjust spacing between plans */
+}
+
+
+/* Bargain Hunter Info Styles */
+.bargain-hunter-info {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bargain-hunter-info ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bargain-hunter-info ul li {
+    width: calc(100% / 3); /* Distribute buttons evenly in three columns */
+    margin-bottom: 10px; /* Adjust spacing between buttons */
+}
+
+.bargain-hunter-info ul li button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bargain-hunter-info ul li button:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+}
+
+
+/* Style for arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+/* Footer Styles */
+.footer {
+    background-color: #041b34;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+/* Category View Styles */
+.category-view {
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.category-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical overflow */
+    margin-top: 20px;
+    padding-bottom: 20px;
+    max-width: 1300px; /* Set maximum width to fit within a fixed-size container */
+    object-fit: cover;
+}
+
+
+.category {
+    flex: 0 0 auto;
+    width: 200px; /* Set the width of each category */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    text-align: center; /* Center-align category title */
+    color: black; /* Set font color to black */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+    transition: transform 0.3s ease;
+}
+
+
+
+
+
+.category:hover {
+    transform: scale(1.1); /* Grow the item by 10% on hover */
+}
+
+
+.category.active {
+    background-color: #ddd; /* Change background color when category is active */
+}
+
+.category:last-child {
+    margin-right: 0; /* Remove right margin from the last category */
+}
+
+.category img {
+    width: 100%; /* Make all images fill the container */
+    height: 150px; /* Set a fixed height to maintain aspect ratio */
+    object-fit: cover; /* Prevent image distortion while covering the container */
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 10px;
+}
+
+.category h3 {
+    margin-bottom: 10px; /* Add spacing between category title and description */
+}
+
+.advertisement-container {
+    width: 1500vw; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+    overflow: hidden; /* Hide overflow if image exceeds container size */
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    object-fit: cover;
+
+}
+.advertisement-container {
+    width: 100%; /* Adjust the width as needed */
+    height: 450px; /* Adjust the height as needed */
+    overflow: hidden; /* Hide overflow if image exceeds container size */
+    display: block; /* Use flexbox to center the image */
+    position: relative; /* Positioning context for absolute positioning of images */
+    object-fit: cover;
+}
+
+.advertisement-carousel {
+    display: flex; /* Use flexbox for carousel items */
+    transition: transform 0.5s ease; /* Smooth transition effect */
+}
+
+.advertisement-item {
+    width: 100%; /* Each item occupies full width of container */
+    flex-shrink: 0; /* Prevent items from shrinking */
+}
+
+.advertisement-item img {
+    width: 100%; /* Ensure images fill the width of their container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.carousel-control {
+    cursor: pointer;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background for controls */
+    border-radius: 50%; /* Circular shape */
+}
+
+.carousel-control:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Darker background on hover */
+}
+
+.carousel-control-prev {
+    margin-right: 10px;
+}
+
+.carousel-control-next {
+    margin-left: 10px;
+}
+
+
+.slide img {
+    width: 100%; /* Make the images fill the slide container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.advertisement-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+

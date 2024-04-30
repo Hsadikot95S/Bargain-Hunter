@@ -1,0 +1,114 @@
+/* Page background color */
+body {
+    background-color: #ced3d9; /* Choose your desired background color */
+  }
+  
+  /* Form container */
+  form {
+   
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  /* Form fields */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select {
+    width: calc(100% - 16px);
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Form fields focus */
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #97adc6;
+  }
+  
+  /* Checkbox and radio button styles */
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  
+  /* Submit button */
+  button[type="submit"] {
+    width: 100%;
+    background-color: #97adc6;
+    color: #fff;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Submit button hover */
+  button[type="submit"]:hover {
+    background-color: #6897cc;
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 600px) {
+    form {
+      border: none;
+      border-radius: 0;
+    }
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-container label {
+    margin-right: 10px;
+  }
+  
+  .price {
+    margin-left: 450px;
+    color: #555; /* Adjust color as needed */
+  }
+  
+  .price1 {
+    margin-left: 406px;
+    color: #555; /* Adjust color as needed */
+  }
+
+  .price2 {
+    margin-left: 507px;
+    color: #555; /* Adjust color as needed */
+  }
+
+  .price3 {
+    margin-left: 475px;
+    color: #555; /* Adjust color as needed */
+  }
+
+ 

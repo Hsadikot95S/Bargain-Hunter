@@ -1,0 +1,87 @@
+.registration-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center; /* Center-align heading */
+}
+
+.mode-toggle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mode-toggle button {
+  padding: 10px;
+  width: 48%;
+  background-color: #4CAF50; /* Green button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mode-toggle button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.social-login button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  background-color: #3b5998; /* Facebook blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-login button:nth-child(2) {
+  background-color: #db4437; /* Google red */
+}
+
+.social-login button:nth-child(3) {
+  background-color: #000; /* Apple black */
+}
+
+form {
+  margin-top: 20px;
+}
+
+form input,
+form select,
+form button {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+form label {
+  display: flex;
+  align-items: center;
+}
+
+form label input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.registration-form button[type="submit"] {
+  background-color: #4CAF50; /* Green button color */
+}
+
+.registration-form button[type="submit"]:disabled {
+  background-color: #ccc; /* Disabled button color */
+  cursor: not-allowed;
+}
+.password-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px; /* Add margin to create space between the input and message */
+}
